@@ -1,4 +1,5 @@
 import Expenses from "./components/Expenses/Expenses";
+import ExpenseForm from './components/Expenses/ExpenseForm/ExpenseForm'
 
 class Expense {
   constructor(id, title, amount, date) {
@@ -18,7 +19,7 @@ const expenses = [
 
 const App = () => (
   <div>
-    <h2>Let's get started!</h2>
+    <ExpenseForm/>
     <Expenses expenses={expenses} />
   </div>
 );
