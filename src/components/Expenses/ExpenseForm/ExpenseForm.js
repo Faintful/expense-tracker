@@ -10,29 +10,31 @@ const initialState = {
 export default () => {
   const [input, setInput] = useState(initialState);
 
-  /*     const [titleInput, setTitleInput] = useState('');
-    const [amountInput, setAmountInput] = useState('');
-    const [dateInput, setDateInput] = useState(''); */
-
   const inputChangeHandler = ({ target: { name, value } }) =>
     setInput((prevState) => ({ ...prevState, [name]: value }));
 
-  /* const titleChangeHandler = ({ target: { value } }) => setTitleInput(value);
-  const amountChangeHandler = ({ target: { value } }) => setAmountInput(value);
-  const dateChangeHandler = ({ target: { value } }) => setDateInput(value); */
-  //const exampleEventHandler = (event) => console.log(event.target.value);
+  const submitHandler = (event) => {
+    event.preventDefault();
+    console.log(input);
+  };
 
   return (
-    <form className="expense-form">
+    <form className="expense-form" onSubmit={submitHandler}>
       <div className="expense-form__controls">
         <div className="expense-form__control">
           <label htmlFor="title">Title</label>
-          <input id="title" onChange={inputChangeHandler} type="text" />
+          <input
+            id="title"
+            name="title"
+            onChange={inputChangeHandler}
+            type="text"
+          />
         </div>
         <div className="expense-form__control">
           <label htmlFor="amount">Amount</label>
           <input
             id="amount"
+            name="amount"
             onChange={inputChangeHandler}
             type="number"
             min="0.01"
@@ -43,6 +45,7 @@ export default () => {
           <label htmlFor="date">Date</label>
           <input
             id="date"
+            name="date"
             onChange={inputChangeHandler}
             type="date"
             min="2019-01-01"
