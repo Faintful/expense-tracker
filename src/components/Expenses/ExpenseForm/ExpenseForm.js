@@ -7,7 +7,7 @@ const initialState = {
   date: '',
 };
 
-export default () => {
+export default ({ onChildFormSubmit }) => {
   const [input, setInput] = useState(initialState);
 
   const inputChangeHandler = ({ target: { name, value } }) =>
@@ -15,7 +15,8 @@ export default () => {
 
   const submitHandler = (event) => {
     event.preventDefault();
-    console.log(input);
+    onChildFormSubmit(input);
+    setInput(initialState);
   };
 
   return (
@@ -26,8 +27,9 @@ export default () => {
           <input
             id="title"
             name="title"
-            onChange={inputChangeHandler}
             type="text"
+            value={input.title}
+            onChange={inputChangeHandler}
           />
         </div>
         <div className="expense-form__control">
@@ -35,8 +37,9 @@ export default () => {
           <input
             id="amount"
             name="amount"
-            onChange={inputChangeHandler}
             type="number"
+            value={input.amount}
+            onChange={inputChangeHandler}
             min="0.01"
             step="0.01"
           />
@@ -46,8 +49,9 @@ export default () => {
           <input
             id="date"
             name="date"
-            onChange={inputChangeHandler}
             type="date"
+            value={input.date}
+            onChange={inputChangeHandler}
             min="2019-01-01"
             max="2022-12-31"
           />
