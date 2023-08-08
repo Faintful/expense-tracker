@@ -1,12 +1,15 @@
-import ExpenseItem from "./ExpenseItem";
-import "./Expenses.css";
-import Card from "../UI/Card";
+import ExpenseItem from './ExpenseItem';
+import './Expenses.css';
+import Card from '../UI/Card';
 
-const Expenses = ({ expenses }) =>
-  expenses.map((expense, index) => (
-    <Card className="expenses" key={expenses[index].id}>
-      <ExpenseItem {...expense} />
+const Expenses = ({ expenses }) => {
+  return (
+    <Card className="expenses">
+      {expenses.map((expense, index) => (
+        <ExpenseItem key={expenses[index].id} {...expense} />
+      ))}
     </Card>
-  ));
+  );
+};
 
 export default Expenses;
