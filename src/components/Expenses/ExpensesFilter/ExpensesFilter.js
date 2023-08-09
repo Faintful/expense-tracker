@@ -2,7 +2,7 @@ import React from 'react';
 
 import './ExpensesFilter.css';
 
-const ExpensesFilter = ({ onSelectYear, initialYear }) => {
+const ExpensesFilter = ({ onSelectYear, initialYear, years }) => {
   const onSelectHandler = (event) => {
     onSelectYear(parseInt(event.target.value));
   };
@@ -10,12 +10,12 @@ const ExpensesFilter = ({ onSelectYear, initialYear }) => {
     <div className="expenses-filter">
       <div className="expenses-filter__control">
         <label htmlFor="yearFilter">Filter by year</label>
-        <select id="yearFilter" onChange={onSelectHandler}>
-          <option value="">Select a Year</option>
-          <option value="2022">2022</option>
-          <option value="2021">2021</option>
-          <option value="2020">2020</option>
-          <option value="2019">2019</option>
+        <select value={initialYear} id="yearFilter" onChange={onSelectHandler}>
+          {years.map((year, index) => (
+            <option value={year} key={index}>
+              {year}
+            </option>
+          ))}
         </select>
       </div>
     </div>

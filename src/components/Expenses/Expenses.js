@@ -5,8 +5,16 @@ import Card from '../UI/Card';
 
 import './Expenses.css';
 
+var years = [2022, 2021, 2020, 2019];
+
 const Expenses = ({ expenses }) => {
-  const [year, setYear] = useState('');
+  const [yearState, setYear] = useState(2019);
+
+  const yearsWarning = (yearsArray) => {
+    yearsArray = yearsArray.filter((year) => year !== yearState);
+    yearsArray = yearsArray.sort();
+    return yearsArray;
+  };
 
   const selectYearHandler = (year) => {
     setYear(year);
@@ -14,7 +22,14 @@ const Expenses = ({ expenses }) => {
 
   return (
     <Card className="expenses">
-      <ExpensesFilter initialYear={year} onSelectYear={selectYearHandler} />
+      <ExpensesFilter
+        initialYear={yearState}
+        onSelectYear={selectYearHandler}
+        years={years}
+      />
+      <p>{`Data for years ${yearsWarning(years)[0]}, ${
+        yearsWarning(years)[1]
+      }, and ${yearsWarning(years)[2]} is hidden`}</p>
       {expenses.map((expense, index) => (
         <ExpenseItem key={expenses[index].id} {...expense} />
       ))}
