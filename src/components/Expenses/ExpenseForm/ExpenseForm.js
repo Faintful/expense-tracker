@@ -7,7 +7,7 @@ const initialState = {
   date: '',
 };
 
-export default ({ onChildFormSubmit }) => {
+export default ({ onFormSubmit }) => {
   const [input, setInput] = useState(initialState);
 
   const inputChangeHandler = ({ target: { name, value } }) =>
@@ -15,7 +15,7 @@ export default ({ onChildFormSubmit }) => {
 
   const submitHandler = (event) => {
     event.preventDefault();
-    onChildFormSubmit(input);
+    onFormSubmit(input);
     setInput(initialState);
   };
 

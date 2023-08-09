@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import Expenses from './components/Expenses/Expenses';
 import ExpenseForm from './components/Expenses/ExpenseForm/ExpenseForm';
 
@@ -18,15 +19,20 @@ const expenses = [
 ];
 
 const App = () => {
-  const childFormSubmitHandler = (event) => {
-    console.log(
-      new Expense('e5', event.title, event.amount, new Date(event.date))
-    );
+  const [expensesState, setExpensesState] = useState(expenses);
+
+  const formSubmitHandler = (event) => {
+    setExpensesState((prevstate) => {
+      return [
+        new Expense('e5', event.title, event.amount, new Date(event.date)),
+        ...prevstate,
+      ];
+    });
   };
   return (
     <div>
-      <ExpenseForm onChildFormSubmit={childFormSubmitHandler} />
-      <Expenses expenses={expenses} />
+      <ExpenseForm onFormSubmit={formSubmitHandler} />
+      <Expenses expenses={expensesState} />
     </div>
   );
 };
