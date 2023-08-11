@@ -20,6 +20,12 @@ const Expenses = ({ expenses }) => {
     setYear(year);
   };
 
+  function filterByYear(expenses) {
+    return expenses.filter(
+      (expense) => expense.date.getFullYear() === yearState
+    );
+  }
+
   return (
     <Card className="expenses">
       <ExpensesFilter
@@ -30,9 +36,13 @@ const Expenses = ({ expenses }) => {
       <p>{`Data for years ${yearsWarning(years)[0]}, ${
         yearsWarning(years)[1]
       }, and ${yearsWarning(years)[2]} is hidden`}</p>
-      {expenses.map((expense, index) => (
-        <ExpenseItem key={expenses[index].id} {...expense} />
-      ))}
+      {filterByYear(expenses).length > 0 ? (
+        filterByYear(expenses).map((expense, index) => (
+          <ExpenseItem key={expenses[index].id} {...expense} />
+        ))
+      ) : (
+        <p>No expenses found</p>
+      )}
     </Card>
   );
 };
