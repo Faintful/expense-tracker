@@ -20,45 +20,45 @@ export default ({ onFormSubmit }) => {
   };
 
   return (
-    <form className="expense-form" onSubmit={submitHandler}>
-      <div className="expense-form__controls">
-        <div className="expense-form__control">
-          <label htmlFor="title">Title</label>
+    <form onSubmit={submitHandler}>
+      <div className='new-expense__controls'>
+        <div className='new-expense__control'>
+          <label htmlFor='title'>Title</label>
           <input
-            id="title"
-            name="title"
-            type="text"
+            id='title'
+            name='title'
+            type='text'
             value={input.title}
             onChange={inputChangeHandler}
           />
         </div>
-        <div className="expense-form__control">
-          <label htmlFor="amount">Amount</label>
+        <div className='new-expense__control'>
+          <label htmlFor='amount'>Amount</label>
           <input
-            id="amount"
-            name="amount"
-            type="number"
+            id='amount'
+            name='amount'
+            type='number'
             value={input.amount}
             onChange={inputChangeHandler}
-            min="0.01"
-            step="0.01"
+            min='0.01'
+            step='0.01'
           />
         </div>
-        <div className="expense-form__control">
-          <label htmlFor="date">Date</label>
+        <div className='new-expense__control'>
+          <label htmlFor='date'>Date</label>
           <input
-            id="date"
-            name="date"
-            type="date"
+            id='date'
+            name='date'
+            type='date'
             value={input.date}
             onChange={inputChangeHandler}
-            min="2019-01-01"
-            max="2022-12-31"
+            min='2019-01-01'
+            max='2022-12-31'
           />
         </div>
       </div>
-      <div className="expense-form__actions">
-        <button type="submit">Add Expense</button>
+      <div className='new-expense__actions'>
+        <button type='submit'>Add Expense</button>
       </div>
     </form>
   );

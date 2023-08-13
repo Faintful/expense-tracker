@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Expenses from './components/Expenses/Expenses';
 import ExpenseForm from './components/Expenses/ExpenseForm/ExpenseForm';
+import NewExpense from './components/Expenses/NewExpense';
 
 class Expense {
   constructor(id, title, amount, date) {
@@ -21,17 +22,17 @@ const expenses = [
 const App = () => {
   const [expensesState, setExpensesState] = useState(expenses);
 
-  const formSubmitHandler = (event) => {
+  const addExpenseHandler = (event) => {
     setExpensesState((prevstate) => {
       return [
-        new Expense('e5', event.title, event.amount, new Date(event.date)),
+        new Expense(Math.random().toString(), event.title, event.amount, new Date(event.date)),
         ...prevstate,
       ];
     });
   };
   return (
     <div>
-      <ExpenseForm onFormSubmit={formSubmitHandler} />
+      <NewExpense onAddExpense={addExpenseHandler} />
       <Expenses expenses={expensesState} />
     </div>
   );
