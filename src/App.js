@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Expenses from './components/Expenses/Expenses';
 import ExpenseForm from './components/Expenses/ExpenseForm/ExpenseForm';
-import NewExpense from './components/Expenses/NewExpense';
+import AddExpense from './components/Expenses/AddExpense';
 
 class Expense {
   constructor(id, title, amount, date) {
@@ -32,7 +32,7 @@ const App = () => {
   };
   return (
     <div>
-      <NewExpense onAddExpense={addExpenseHandler} />
+      <AddExpense onAddExpense={addExpenseHandler} />
       <Expenses expenses={expensesState} />
     </div>
   );

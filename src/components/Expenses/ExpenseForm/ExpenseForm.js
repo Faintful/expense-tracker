@@ -7,7 +7,7 @@ const initialState = {
   date: '',
 };
 
-export default ({ onFormSubmit }) => {
+export default ({ onFormSubmit, onFormCancel }) => {
   const [input, setInput] = useState(initialState);
 
   const inputChangeHandler = ({ target: { name, value } }) =>
@@ -16,7 +16,8 @@ export default ({ onFormSubmit }) => {
   const submitHandler = (event) => {
     event.preventDefault();
     onFormSubmit(input);
-    setInput(initialState);
+    onFormCancel();
+    // setInput(initialState);
   };
 
   return (
@@ -58,6 +59,7 @@ export default ({ onFormSubmit }) => {
         </div>
       </div>
       <div className='new-expense__actions'>
+        <button type='button' onClick={onFormCancel}>Cancel</button>
         <button type='submit'>Add Expense</button>
       </div>
     </form>
