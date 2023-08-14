@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import Expenses from './components/Expenses/Expenses';
-import ExpenseForm from './components/Expenses/ExpenseForm/ExpenseForm';
 import AddExpense from './components/Expenses/AddExpense';
 
 class Expense {
